@@ -13,10 +13,19 @@ import "./styles/terminal.css";
 
 function TerminalWrapper() {
   const navigate = useNavigate();
+
   return (
     <div className="screen-transition terminal-wrapper">
       <Terminal onExit={() => navigate("/")} />
     </div>
+  );
+}
+
+function AmbientWrapper() {
+  const navigate = useNavigate();
+
+  return (
+    <ServerAmbient onBoot={() => navigate("/terminal")} />
   );
 }
 
@@ -33,9 +42,9 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/education" element={<Education />} />
         </Route>
-        
+
         <Route path="/terminal" element={<TerminalWrapper />} />
-        <Route path="/ambient" element={<ServerAmbient onBoot={() => window.location.href = "/terminal"} />} />
+        <Route path="/ambient" element={<AmbientWrapper />} />
       </Routes>
     </BrowserRouter>
   );
