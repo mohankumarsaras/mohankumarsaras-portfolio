@@ -24,7 +24,7 @@ export default function Terminal({ onExit }) {
   const terminalRef = useRef(null);
   const dragState = useRef(null);
   const history = useCommandHistory();
-  const { mode, width, height, isMaximized, isMobile, setManualSize, toggleMaximize, resetSize } = useTerminalSize();
+  const { mode, width, height, isMaximized, isMobile, setManualSize, toggleMaximize } = useTerminalSize();
   const [searchParams] = useSearchParams();
   const [connectState, setConnectState] = useState(
     searchParams.get("startDir") ? "connecting" : "connected"
@@ -224,12 +224,40 @@ export default function Terminal({ onExit }) {
   return (
     <div className="terminal-window" ref={terminalRef} style={dynamicStyles} onClick={focusInput}>
       <div className="terminal-titlebar" onDoubleClick={toggleMaximize}>
-        <span className="dot red" onClick={(e) => { e.stopPropagation(); onExit && onExit(); }} title="Close" style={{ cursor: "pointer" }} />
-        <span className="dot yellow" />
-        <span className="dot green" onClick={(e) => { e.stopPropagation(); resetSize(); }} title="Reset Size" style={{ cursor: "pointer" }} />
-        <span className="title-text" style={{ userSelect: "none" }}>
+        <div
+          className="terminal-window-controls"
+          onDoubleClick={(e) => e.stopPropagation()}
+        >
+          <button
+            type="button"
+            className="terminal-control terminal-control-close"
+            onClick={(e) => {
+              e.stopPropagation();
+              onExit && onExit();
+            }}
+            aria-label="Close terminal"
+            title="Close"
+          />
+          <span
+            className="terminal-control terminal-control-minimize"
+            aria-hidden="true"
+          />
+          <button
+            type="button"
+            className="terminal-control terminal-control-maximize"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleMaximize();
+            }}
+            aria-label={isMaximized ? "Restore terminal" : "Maximize terminal"}
+            title={isMaximized ? "Restore" : "Maximize"}
+          />
+        </div>
+
+        <span className="title-text">
           {PROMPT_USER}@{PROMPT_HOST}: {promptPath}
         </span>
+
         <button
           type="button"
           className="terminal-home-button"

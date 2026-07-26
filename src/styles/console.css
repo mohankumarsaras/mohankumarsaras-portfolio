@@ -562,3 +562,301 @@
     padding: 12px;
   }
 }
+
+
+/* =========================================================
+   Responsive toolbar standardization
+   Keeps the existing visual language while normalizing
+   alignment, hit areas, wrapping, and CSS tooltips.
+   ========================================================= */
+
+.console-topbar {
+  min-height: 48px;
+  height: auto;
+  gap: 12px;
+}
+
+.console-logo-area {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.console-search {
+  min-width: 180px;
+}
+
+.console-nav-actions {
+  flex: 0 0 auto;
+  min-width: 0;
+  gap: 6px;
+}
+
+.console-icon-btn,
+.console-account-pill {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.console-icon-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  flex: 0 0 36px;
+  border-radius: 6px;
+  transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
+}
+
+.console-icon-btn:hover,
+.console-icon-btn:focus-visible {
+  color: #1e293b;
+  background-color: #f1f5f9;
+}
+
+.console-icon-btn:focus-visible,
+.console-account-pill:focus-visible,
+.console-shortcut-btn:focus-visible {
+  outline: 2px solid #2DD4BF;
+  outline-offset: 2px;
+}
+
+.console-account-pill {
+  min-height: 36px;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+
+.console-shortcut-row {
+  min-height: 44px;
+  height: auto;
+}
+
+.console-shortcut-btn {
+  min-height: 32px;
+  box-sizing: border-box;
+  transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
+}
+
+/*
+  Tooltip support:
+  Add data-tooltip="Download", data-tooltip="Open CLI Terminal",
+  data-tooltip="Notifications", etc. to icon-only controls.
+*/
+.console-icon-btn[data-tooltip]::after,
+.console-account-pill[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-2px);
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
+}
+
+.console-icon-btn[data-tooltip]::before,
+.console-account-pill[data-tooltip]::before {
+  content: "";
+  position: absolute;
+  z-index: 1001;
+  top: calc(100% + 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: #0f172a;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 120ms ease, visibility 120ms ease;
+}
+
+.console-icon-btn[data-tooltip]:hover::after,
+.console-icon-btn[data-tooltip]:focus-visible::after,
+.console-icon-btn[data-tooltip]:hover::before,
+.console-icon-btn[data-tooltip]:focus-visible::before,
+.console-account-pill[data-tooltip]:hover::after,
+.console-account-pill[data-tooltip]:focus-visible::after,
+.console-account-pill[data-tooltip]:hover::before,
+.console-account-pill[data-tooltip]:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.console-icon-btn[data-tooltip]:hover::after,
+.console-icon-btn[data-tooltip]:focus-visible::after,
+.console-account-pill[data-tooltip]:hover::after,
+.console-account-pill[data-tooltip]:focus-visible::after {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Intermediate widths: keep one clean toolbar row where possible. */
+@media (max-width: 1100px) and (min-width: 768px) {
+  .console-topbar {
+    padding: 8px 12px;
+  }
+
+  .console-search {
+    margin: 0 12px;
+    min-width: 120px;
+  }
+
+  .console-nav-actions {
+    gap: 4px;
+  }
+
+  .console-account-pill {
+    padding-inline: 6px;
+  }
+}
+
+/*
+  Mobile/tablet:
+  Row 1 = brand + action controls
+  Row 2 = full-width search.
+  This prevents the uneven multi-line icon layout visible at ~430px.
+*/
+@media (max-width: 767px) {
+  .console-topbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 10px 12px;
+    column-gap: 8px;
+    row-gap: 10px;
+  }
+
+  .console-logo-area {
+    grid-column: 1;
+    grid-row: 1;
+    overflow: hidden;
+  }
+
+  .console-wordmark {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .console-nav-actions {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .console-search {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .console-icon-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    flex-basis: 36px;
+  }
+
+  .console-account-pill {
+    min-width: 36px;
+    width: 36px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .console-account-pill span {
+    display: none;
+  }
+
+  .console-shortcut-row {
+    padding: 6px 12px;
+    gap: 8px;
+  }
+
+  .console-shortcut-btn {
+    min-height: 32px;
+  }
+
+  /* Touch devices do not need hover tooltips. Accessible labels remain in markup. */
+  @media (hover: none) {
+    .console-icon-btn[data-tooltip]::before,
+    .console-icon-btn[data-tooltip]::after,
+    .console-account-pill[data-tooltip]::before,
+    .console-account-pill[data-tooltip]::after {
+      display: none;
+    }
+  }
+}
+
+/* Very narrow phones: compact the toolbar without creating a third row. */
+@media (max-width: 480px) {
+  .console-topbar {
+    padding-inline: 10px;
+  }
+
+  .console-logo-area {
+    gap: 8px;
+  }
+
+  .console-logo-mark {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    font-size: 12px;
+  }
+
+  .console-wordmark {
+    font-size: 13px;
+    max-width: 116px;
+  }
+
+  .console-nav-actions {
+    gap: 2px;
+  }
+
+  .console-icon-btn,
+  .console-account-pill {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    flex-basis: 34px;
+  }
+}
+
+@media (max-width: 380px) {
+  .console-wordmark {
+    max-width: 88px;
+  }
+
+  .console-icon-btn,
+  .console-account-pill {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    flex-basis: 32px;
+  }
+}
