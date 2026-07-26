@@ -10,14 +10,19 @@
   width: 100%;
 }
 
-/* --- Top Nav --- */
+/* =========================================================
+   TOP NAV
+   ========================================================= */
+
 .console-topbar {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  height: 48px;
+  min-height: 48px;
+  height: auto;
+  gap: 12px;
   background-color: #ffffff;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -26,12 +31,14 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 0 0 auto;
+  min-width: 0;
 }
 
 .console-logo-mark {
   width: 24px;
   height: 24px;
-  background-color: #2DD4BF;
+  background-color: #2dd4bf;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -39,6 +46,7 @@
   color: #f8fafc;
   font-weight: 900;
   font-size: 14px;
+  flex-shrink: 0;
 }
 
 .console-wordmark {
@@ -50,13 +58,14 @@
 .console-search {
   flex: 1;
   max-width: 600px;
+  min-width: 180px;
   margin: 0 24px;
   position: relative;
 }
 
 .console-search-results {
   position: absolute;
-  z-index: 10;
+  z-index: 100;
   top: calc(100% + 6px);
   left: 0;
   right: 0;
@@ -64,15 +73,26 @@
   overflow: hidden;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, .14);
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
 }
 
-.console-search-results a { padding: 9px 12px; color: #0f172a; font-size: 13px; text-decoration: none; }
-.console-search-results a:hover, .console-search-results a:focus { background: #ecfeff; outline: none; }
+.console-search-results a {
+  padding: 9px 12px;
+  color: #0f172a;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.console-search-results a:hover,
+.console-search-results a:focus {
+  background: #ecfeff;
+  outline: none;
+}
 
 .console-search input {
   width: 100%;
+  box-sizing: border-box;
   padding: 6px 16px 6px 36px;
   border-radius: 4px;
   background-color: #f1f5f9;
@@ -83,7 +103,7 @@
 }
 
 .console-search input:focus {
-  border-color: #2DD4BF;
+  border-color: #2dd4bf;
 }
 
 .console-search .search-icon {
@@ -92,500 +112,16 @@
   top: 50%;
   transform: translateY(-50%);
   color: #64748b;
+  pointer-events: none;
 }
-
-.console-nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.console-icon-btn {
-  background: none;
-  border: none;
-  color: #64748b;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 36px;
-  min-height: 36px;
-  border-radius: 4px;
-}
-
-.console-icon-btn:hover {
-  color: #1e293b;
-}
-
-.console-account-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 8px;
-  border-radius: 16px;
-  font-size: 13px;
-  cursor: pointer;
-}
-.console-account-pill:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-/* --- Service Shortcut Row --- */
-.console-shortcut-row {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  height: 44px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  gap: 12px;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.console-shortcut-row::-webkit-scrollbar {
-  display: none;
-}
-.console-shortcut-row {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.console-shortcut-btn {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 12px 4px 4px;
-  border: 1px solid transparent;
-  border-radius: 16px;
-  background-color: #f1f5f9;
-  color: #1e293b;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.console-shortcut-btn:hover {
-  border-color: #2DD4BF;
-}
-
-.console-shortcut-btn[aria-current="page"] {
-  border-color: #0f766e;
-  background: #ecfeff;
-  box-shadow: inset 0 -2px 0 #0f766e;
-  font-weight: 700;
-}
-
-.shortcut-icon-wrapper {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.shortcut-icon-wrapper svg {
-  color: #fff;
-}
-
-/* --- Main Content --- */
-.console-content {
-  flex: 1;
-  padding: clamp(16px, 2.5vw, 48px);
-  max-width: 2560px;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.console-header-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.console-header-left {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.console-title {
-  font-size: clamp(20px, 4vw, 24px);
-  font-weight: 600;
-  margin: 0;
-  color: #0f172a;
-}
-
-.console-info-link {
-  color: #2DD4BF;
-  font-size: 13px;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.console-info-link:hover {
-  text-decoration: underline;
-}
-
-.console-header-actions {
-  display: flex;
-  gap: 12px;
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid #cbd5e1;
-  color: #1e293b;
-  padding: 6px 16px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.btn-outline:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.btn-solid {
-  background: #2DD4BF;
-  border: 1px solid #2DD4BF;
-  color: #f8fafc;
-  padding: 6px 16px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.btn-solid:hover {
-  background: #25b3a1;
-}
-
-/* --- 4-Column Grid --- */
-.console-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(16px, 1.5vw, 28px);
-  width: 100%;
-}
-
-.console-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-}
-
-.console-card-header {
-  padding: 16px;
-  border-bottom: 1px solid #e2e8f0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.console-card-title {
-  font-size: clamp(14px, 3vw, 16px);
-  font-weight: 600;
-  color: #0f172a;
-}
-
-.console-card-actions {
-  display: flex;
-  gap: 8px;
-  color: #64748b;
-}
-
-.console-card-body {
-  padding: 16px;
-  flex: 1;
-}
-
-.console-card-body p { margin: 0; }
-
-/* --- Card Specifics --- */
-
-/* Recently Visited */
-.rv-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.rv-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #2DD4BF;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.rv-item:hover {
-  text-decoration: underline;
-}
-
-.rv-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.rv-icon svg {
-  color: #fff;
-}
-
-/* Career Health */
-.health-row {
-  padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.health-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-.health-row:first-child {
-  padding-top: 0;
-}
-
-.health-stat-group {
-  display: flex;
-  flex-direction: column;
-}
-.health-label {
-  font-size: 13px;
-  color: #1e293b;
-  margin-bottom: 4px;
-}
-.health-timeframe {
-  font-size: 12px;
-  color: #64748b;
-}
-.health-value {
-  font-size: 24px;
-  font-weight: 700;
-  color: #2DD4BF;
-}
-
-/* Latest Updates */
-.updates-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.update-item {
-  display: flex;
-  gap: 16px;
-}
-
-.update-date {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 44px;
-  background-color: #f1f5f9;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-.update-month {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #64748b;
-}
-.update-day {
-  font-size: 16px;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.update-content {
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.update-link {
-  color: #2DD4BF;
-  text-decoration: none;
-  font-weight: 500;
-}
-.update-link:hover {
-  text-decoration: underline;
-}
-
-/* Experience & Impact */
-.impact-main-stat {
-  margin-bottom: 24px;
-}
-.impact-main-value {
-  font-size: 32px;
-  font-weight: 700;
-  color: #0f172a;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.impact-trend {
-  font-size: 14px;
-  color: #48bb78;
-  display: flex;
-  align-items: center;
-}
-.impact-label {
-  font-size: 13px;
-  color: #64748b;
-  margin-top: 4px;
-}
-
-.chart-container {
-  height: 180px;
-  width: 100%;
-  margin-top: 16px;
-}
-
-/* Status Strip */
-.console-status-strip {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  height: 32px;
-  background-color: #ffffff;
-  border-top: 1px solid #e2e8f0;
-  font-size: 12px;
-  color: #64748b;
-  gap: 24px;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.console-status-strip::-webkit-scrollbar {
-  display: none;
-}
-.console-status-strip {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Responsive */
-@media (max-width: 1439px) {
-  .console-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 1024px) {
-  .console-search input::placeholder {
-    color: transparent;
-  }
-  .console-search input {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23a0aec0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
-    background-repeat: no-repeat;
-    background-position: 10px center;
-    padding-left: 32px;
-  }
-  .console-search .search-icon {
-    display: none; /* Let background image handle it for simplicity */
-  }
-}
-
-@media (max-width: 767px) {
-  .console-grid {
-    grid-template-columns: 1fr;
-  }
-  .console-header-section {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  
-  .console-topbar {
-    height: auto;
-    flex-wrap: wrap;
-    padding: 12px 16px;
-    gap: 12px;
-  }
-  .console-search {
-    order: 3;
-    width: 100%;
-    margin: 0;
-    max-width: none;
-  }
-  .console-search input::placeholder {
-    color: #64748b;
-  }
-  .console-search .search-icon {
-    display: block;
-  }
-  .console-search input {
-    background-image: none;
-  }
-  
-  .console-nav-actions {
-    flex: 1;
-    justify-content: flex-end;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .console-icon-btn { min-width: 42px; min-height: 42px; }
-  
-  .console-account-pill span {
-    display: none;
-  }
-  .console-account-pill {
-    padding: 4px;
-    border-radius: 50%;
-  }
-  
-  .console-content {
-    padding: 16px;
-  }
-  .console-card-body {
-    padding: 12px;
-  }
-}
-
 
 /* =========================================================
-   Responsive toolbar standardization
-   Keeps the existing visual language while normalizing
-   alignment, hit areas, wrapping, and CSS tooltips.
+   NAV ACTIONS
    ========================================================= */
 
-.console-topbar {
-  min-height: 48px;
-  height: auto;
-  gap: 12px;
-}
-
-.console-logo-area {
-  flex: 0 0 auto;
-  min-width: 0;
-}
-
-.console-search {
-  min-width: 180px;
-}
-
 .console-nav-actions {
+  display: flex;
+  align-items: center;
   flex: 0 0 auto;
   min-width: 0;
   gap: 6px;
@@ -604,8 +140,22 @@
   min-height: 36px;
   padding: 0;
   flex: 0 0 36px;
+
+  background: none;
+  border: none;
   border-radius: 6px;
-  transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
+
+  color: #64748b;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color 140ms ease,
+    color 140ms ease,
+    box-shadow 140ms ease;
 }
 
 .console-icon-btn:hover,
@@ -617,68 +167,94 @@
 .console-icon-btn:focus-visible,
 .console-account-pill:focus-visible,
 .console-shortcut-btn:focus-visible {
-  outline: 2px solid #2DD4BF;
+  outline: 2px solid #2dd4bf;
   outline-offset: 2px;
 }
 
 .console-account-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   min-height: 36px;
+
   padding: 0 8px;
+
+  border-radius: 16px;
+
+  font-size: 13px;
   white-space: nowrap;
+
+  cursor: pointer;
 }
 
-.console-shortcut-row {
-  min-height: 44px;
-  height: auto;
+.console-account-pill:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.console-shortcut-btn {
-  min-height: 32px;
-  box-sizing: border-box;
-  transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
-}
+/* =========================================================
+   TOOLTIP
+   ========================================================= */
 
-/*
-  Tooltip support:
-  Add data-tooltip="Download", data-tooltip="Open CLI Terminal",
-  data-tooltip="Notifications", etc. to icon-only controls.
-*/
 .console-icon-btn[data-tooltip]::after,
 .console-account-pill[data-tooltip]::after {
   content: attr(data-tooltip);
+
   position: absolute;
   z-index: 1000;
+
   top: calc(100% + 8px);
   left: 50%;
+
   transform: translateX(-50%) translateY(-2px);
+
   padding: 6px 8px;
+
   border-radius: 4px;
+
   background: #0f172a;
   color: #ffffff;
+
   font-size: 12px;
   font-weight: 500;
   line-height: 1;
+
   white-space: nowrap;
+
   pointer-events: none;
+
   opacity: 0;
   visibility: hidden;
-  transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
+
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease,
+    visibility 120ms ease;
 }
 
 .console-icon-btn[data-tooltip]::before,
 .console-account-pill[data-tooltip]::before {
   content: "";
+
   position: absolute;
   z-index: 1001;
+
   top: calc(100% + 3px);
   left: 50%;
+
   transform: translateX(-50%);
+
   border: 5px solid transparent;
   border-bottom-color: #0f172a;
+
   pointer-events: none;
+
   opacity: 0;
   visibility: hidden;
-  transition: opacity 120ms ease, visibility 120ms ease;
+
+  transition:
+    opacity 120ms ease,
+    visibility 120ms ease;
 }
 
 .console-icon-btn[data-tooltip]:hover::after,
@@ -700,14 +276,895 @@
   transform: translateX(-50%) translateY(0);
 }
 
-/* Intermediate widths: keep one clean toolbar row where possible. */
+/* =========================================================
+   SERVICE SHORTCUT ROW
+   ========================================================= */
+
+.console-shortcut-row {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 16px;
+
+  min-height: 44px;
+  height: auto;
+
+  background-color: #ffffff;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  gap: 12px;
+
+  overflow-x: auto;
+
+  white-space: nowrap;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.console-shortcut-row::-webkit-scrollbar {
+  display: none;
+}
+
+.console-shortcut-btn {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-height: 32px;
+
+  padding: 4px 12px 4px 4px;
+
+  border: 1px solid transparent;
+
+  border-radius: 16px;
+
+  background-color: #f1f5f9;
+  color: #1e293b;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+.console-shortcut-btn:hover {
+  border-color: #2dd4bf;
+}
+
+.console-shortcut-btn[aria-current="page"] {
+  border-color: #0f766e;
+  background: #ecfeff;
+  box-shadow: inset 0 -2px 0 #0f766e;
+  font-weight: 700;
+}
+
+.shortcut-icon-wrapper {
+  width: 20px;
+  height: 20px;
+
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shortcut-icon-wrapper svg {
+  color: #ffffff;
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.console-content {
+  flex: 1;
+
+  padding: clamp(16px, 2.5vw, 48px);
+
+  max-width: 2560px;
+
+  margin: 0 auto;
+
+  width: 100%;
+
+  box-sizing: border-box;
+}
+
+.console-header-section {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 24px;
+
+  flex-wrap: wrap;
+
+  gap: 16px;
+}
+
+.console-header-left {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.console-title {
+  font-size: clamp(20px, 4vw, 24px);
+
+  font-weight: 600;
+
+  margin: 0;
+
+  color: #0f172a;
+}
+
+.console-info-link {
+  color: #2dd4bf;
+
+  font-size: 13px;
+
+  text-decoration: none;
+
+  font-weight: 500;
+}
+
+.console-info-link:hover {
+  text-decoration: underline;
+}
+
+.console-header-actions {
+  display: flex;
+
+  gap: 12px;
+}
+
+.btn-outline {
+  background: transparent;
+
+  border: 1px solid #cbd5e1;
+
+  color: #1e293b;
+
+  padding: 6px 16px;
+
+  border-radius: 4px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn-solid {
+  background: #2dd4bf;
+
+  border: 1px solid #2dd4bf;
+
+  color: #f8fafc;
+
+  padding: 6px 16px;
+
+  border-radius: 4px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.btn-solid:hover {
+  background: #25b3a1;
+}
+
+/* =========================================================
+   DASHBOARD GRID
+   ========================================================= */
+
+.console-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: clamp(16px, 1.5vw, 28px);
+
+  width: 100%;
+}
+
+.console-card {
+  min-width: 0;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+.console-card-header {
+  padding: 16px;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.console-card-title {
+  min-width: 0;
+
+  font-size: clamp(14px, 3vw, 16px);
+
+  font-weight: 600;
+
+  color: #0f172a;
+}
+
+.console-card-actions {
+  display: flex;
+
+  gap: 8px;
+
+  color: #64748b;
+
+  flex-shrink: 0;
+}
+
+.console-card-body {
+  padding: 16px;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+.console-card-body p {
+  margin: 0;
+}
+
+/* =========================================================
+   RECENTLY VISITED
+   ========================================================= */
+
+.rv-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.rv-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  text-decoration: none;
+
+  color: #2dd4bf;
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+.rv-item:hover {
+  text-decoration: underline;
+}
+
+.rv-icon {
+  width: 28px;
+  height: 28px;
+
+  border-radius: 4px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.rv-icon svg {
+  color: #ffffff;
+}
+
+/* =========================================================
+   PROFILE CARD
+   ========================================================= */
+
+.profile-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.profile-card .profile-card-body {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 22px 20px;
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+/* IMPORTANT:
+   ConsoleHome JSX must use:
+   className="profile-avatar"
+*/
+
+.profile-card .profile-avatar {
+  display: block;
+
+  width: 104px !important;
+  height: 104px !important;
+
+  min-width: 104px;
+  min-height: 104px;
+
+  max-width: 104px;
+  max-height: 104px;
+
+  flex: 0 0 104px;
+
+  object-fit: cover;
+  object-position: center 20%;
+
+  border-radius: 50%;
+
+  border: 3px solid #ffffff;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 0 0 1px #cbd5e1,
+    0 2px 6px rgba(15, 23, 42, 0.12);
+
+  margin: 0 auto 14px;
+}
+
+.profile-info {
+  width: 100%;
+
+  min-width: 0;
+}
+
+.profile-card .profile-name {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  overflow-wrap: anywhere;
+}
+
+.profile-role {
+  margin-top: 5px;
+
+  color: #0f766e;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+.profile-card .profile-tagline {
+  margin: 8px auto 0;
+
+  max-width: 290px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+.profile-card .profile-location {
+  margin-top: 8px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+.profile-card .profile-view-link {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  margin-top: 12px;
+
+  color: #0d9488;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    color 140ms ease,
+    background-color 140ms ease;
+}
+
+.profile-card .profile-view-link:hover {
+  color: #0f766e;
+
+  text-decoration: underline;
+}
+
+.profile-card .profile-view-link:focus-visible {
+  outline: 2px solid #2dd4bf;
+
+  outline-offset: 3px;
+
+  border-radius: 3px;
+}
+
+/* =========================================================
+   CAREER HEALTH
+   ========================================================= */
+
+.health-row {
+  padding: 12px 0;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.health-row:last-child {
+  border-bottom: none;
+
+  padding-bottom: 0;
+}
+
+.health-row:first-child {
+  padding-top: 0;
+}
+
+.health-stat-group {
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.health-label {
+  font-size: 13px;
+
+  color: #1e293b;
+
+  margin-bottom: 4px;
+}
+
+.health-timeframe {
+  font-size: 12px;
+
+  color: #64748b;
+}
+
+.health-value {
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: #2dd4bf;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   LATEST UPDATES
+   ========================================================= */
+
+.updates-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.update-item {
+  display: flex;
+
+  gap: 16px;
+
+  min-width: 0;
+}
+
+.update-date {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 44px;
+
+  background-color: #f1f5f9;
+
+  border-radius: 4px;
+
+  flex-shrink: 0;
+}
+
+.update-month {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  color: #64748b;
+}
+
+.update-day {
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+.update-content {
+  min-width: 0;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+}
+
+.update-link {
+  color: #2dd4bf;
+
+  text-decoration: none;
+
+  font-weight: 500;
+
+  overflow-wrap: anywhere;
+}
+
+.update-link:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   EXPERIENCE & IMPACT
+   ========================================================= */
+
+.impact-main-stat {
+  margin-bottom: 24px;
+}
+
+.impact-main-value {
+  font-size: 32px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.impact-trend {
+  font-size: 14px;
+
+  color: #48bb78;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.impact-label {
+  font-size: 13px;
+
+  color: #64748b;
+
+  margin-top: 4px;
+}
+
+.chart-container {
+  height: 180px;
+
+  width: 100%;
+
+  margin-top: 16px;
+}
+
+/* =========================================================
+   COMMANDS
+   Easily identifiable CLI / terminal command styling
+   ========================================================= */
+
+.commands-section {
+  width: 100%;
+
+  margin-top: 18px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid #e2e8f0;
+
+  text-align: left;
+}
+
+.commands-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin: 0 0 10px;
+
+  color: #334155;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+}
+
+.commands-title::before {
+  content: ">_";
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 25px;
+  height: 20px;
+
+  padding: 0 4px;
+
+  border-radius: 4px;
+
+  background: #0f172a;
+
+  color: #5eead4;
+
+  font-family:
+    "Cascadia Code",
+    "Fira Code",
+    Consolas,
+    monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+.commands-list {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  width: 100%;
+}
+
+.command-chip {
+  display: inline-flex;
+
+  align-items: center;
+
+  min-width: 0;
+
+  padding: 5px 8px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 5px;
+
+  background: #f8fafc;
+
+  color: #334155;
+
+  font-family:
+    "Cascadia Code",
+    "Fira Code",
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+
+  cursor: default;
+
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
+}
+
+.command-chip::before {
+  content: "$";
+
+  margin-right: 5px;
+
+  color: #0d9488;
+
+  font-weight: 800;
+}
+
+.command-chip:hover {
+  border-color: #2dd4bf;
+
+  background: #ecfeff;
+
+  color: #0f766e;
+
+  transform: translateY(-1px);
+}
+
+.command-category {
+  width: 100%;
+
+  margin-top: 12px;
+}
+
+.command-category:first-child {
+  margin-top: 0;
+}
+
+.command-category-title {
+  margin-bottom: 7px;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   STATUS STRIP
+   ========================================================= */
+
+.console-status-strip {
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 16px;
+
+  height: 32px;
+
+  background-color: #ffffff;
+
+  border-top: 1px solid #e2e8f0;
+
+  font-size: 12px;
+
+  color: #64748b;
+
+  gap: 24px;
+
+  overflow-x: auto;
+
+  white-space: nowrap;
+
+  -ms-overflow-style: none;
+
+  scrollbar-width: none;
+}
+
+.console-status-strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+   RESPONSIVE - LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1439px) {
+
+  .console-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
 @media (max-width: 1100px) and (min-width: 768px) {
+
   .console-topbar {
     padding: 8px 12px;
   }
 
   .console-search {
     margin: 0 12px;
+
     min-width: 120px;
   }
 
@@ -718,70 +1175,168 @@
   .console-account-pill {
     padding-inline: 6px;
   }
+
 }
 
-/*
-  Mobile/tablet:
-  Row 1 = brand + action controls
-  Row 2 = full-width search.
-  This prevents the uneven multi-line icon layout visible at ~430px.
-*/
+@media (max-width: 1024px) {
+
+  .console-search input::placeholder {
+    color: transparent;
+  }
+
+  .console-search input {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23a0aec0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
+
+    background-repeat: no-repeat;
+
+    background-position: 10px center;
+
+    padding-left: 32px;
+  }
+
+  .console-search .search-icon {
+    display: none;
+  }
+
+  .profile-card .profile-avatar {
+    width: 96px !important;
+    height: 96px !important;
+
+    min-width: 96px;
+    min-height: 96px;
+
+    max-width: 96px;
+    max-height: 96px;
+
+    flex-basis: 96px;
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
 @media (max-width: 767px) {
+
+  .console-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .console-header-section {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+
+  /*
+    Row 1:
+    Logo + action buttons
+
+    Row 2:
+    Search
+  */
+
   .console-topbar {
     display: grid;
+
     grid-template-columns: minmax(0, 1fr) auto;
+
     align-items: center;
+
     padding: 10px 12px;
+
     column-gap: 8px;
+
     row-gap: 10px;
   }
 
   .console-logo-area {
     grid-column: 1;
+
     grid-row: 1;
+
     overflow: hidden;
   }
 
   .console-wordmark {
     overflow: hidden;
+
     text-overflow: ellipsis;
+
     white-space: nowrap;
   }
 
   .console-nav-actions {
     grid-column: 2;
+
     grid-row: 1;
+
     display: flex;
+
     flex: 0 0 auto;
+
     justify-content: flex-end;
+
     align-items: center;
+
     flex-wrap: nowrap;
+
     gap: 4px;
   }
 
   .console-search {
     grid-column: 1 / -1;
+
     grid-row: 2;
+
     width: 100%;
+
     min-width: 0;
+
+    max-width: none;
+
     margin: 0;
+  }
+
+  .console-search input::placeholder {
+    color: #64748b;
+  }
+
+  .console-search .search-icon {
+    display: block;
+  }
+
+  .console-search input {
+    background-image: none;
+
+    padding-left: 36px;
   }
 
   .console-icon-btn {
     width: 36px;
     height: 36px;
+
     min-width: 36px;
     min-height: 36px;
+
     flex-basis: 36px;
   }
 
   .console-account-pill {
     min-width: 36px;
+
     width: 36px;
     height: 36px;
+
     min-height: 36px;
+
     padding: 0;
+
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
   }
@@ -792,6 +1347,7 @@
 
   .console-shortcut-row {
     padding: 6px 12px;
+
     gap: 8px;
   }
 
@@ -799,19 +1355,76 @@
     min-height: 32px;
   }
 
-  /* Touch devices do not need hover tooltips. Accessible labels remain in markup. */
-  @media (hover: none) {
-    .console-icon-btn[data-tooltip]::before,
-    .console-icon-btn[data-tooltip]::after,
-    .console-account-pill[data-tooltip]::before,
-    .console-account-pill[data-tooltip]::after {
-      display: none;
-    }
+  .console-content {
+    padding: 16px;
   }
+
+  .console-card-body {
+    padding: 12px;
+  }
+
+  .console-header-actions {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+
+  .btn-outline,
+  .btn-solid {
+    min-height: 36px;
+  }
+
 }
 
-/* Very narrow phones: compact the toolbar without creating a third row. */
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .profile-card .profile-card-body {
+    padding: 18px 16px;
+  }
+
+  .profile-card .profile-avatar {
+    width: 88px !important;
+    height: 88px !important;
+
+    min-width: 88px;
+    min-height: 88px;
+
+    max-width: 88px;
+    max-height: 88px;
+
+    flex-basis: 88px;
+  }
+
+  .profile-card .profile-name {
+    font-size: 16px;
+  }
+
+  .profile-card .profile-tagline {
+    max-width: 100%;
+  }
+
+  .commands-list {
+    gap: 6px;
+  }
+
+  .command-chip {
+    font-size: 10px;
+
+    padding: 5px 7px;
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE - VERY SMALL MOBILE
+   ========================================================= */
+
 @media (max-width: 480px) {
+
   .console-topbar {
     padding-inline: 10px;
   }
@@ -823,12 +1436,15 @@
   .console-logo-mark {
     width: 22px;
     height: 22px;
+
     flex: 0 0 22px;
+
     font-size: 12px;
   }
 
   .console-wordmark {
     font-size: 13px;
+
     max-width: 116px;
   }
 
@@ -840,13 +1456,36 @@
   .console-account-pill {
     width: 34px;
     height: 34px;
+
     min-width: 34px;
     min-height: 34px;
+
     flex-basis: 34px;
   }
+
+  .console-header-actions {
+    gap: 8px;
+  }
+
+  .btn-outline,
+  .btn-solid {
+    padding: 6px 10px;
+
+    font-size: 12px;
+  }
+
+  .update-item {
+    gap: 10px;
+  }
+
 }
 
+/* =========================================================
+   RESPONSIVE - 380PX
+   ========================================================= */
+
 @media (max-width: 380px) {
+
   .console-wordmark {
     max-width: 88px;
   }
@@ -855,8 +1494,26 @@
   .console-account-pill {
     width: 32px;
     height: 32px;
+
     min-width: 32px;
     min-height: 32px;
+
     flex-basis: 32px;
   }
+
+}
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+  .console-icon-btn[data-tooltip]::before,
+  .console-icon-btn[data-tooltip]::after,
+  .console-account-pill[data-tooltip]::before,
+  .console-account-pill[data-tooltip]::after {
+    display: none;
+  }
+
 }

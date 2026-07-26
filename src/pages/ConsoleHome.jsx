@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import "../styles/console.css";
+import profilePhoto from "../assets/mohankumar-profile.jpeg";
 
 const chartData = [
   { year: "2021", projects: 2 },
@@ -70,7 +71,52 @@ export default function ConsoleHome() {
             </div>
           </div>
 
-          {/* Card 2: Career Health */}
+          {/* Card 2: Profile */}
+          <div className="console-card profile-card">
+            <div className="console-card-header">
+              <span className="console-card-title">Profile</span>
+
+              <div className="console-card-actions">
+                <MoreVertical size={16} />
+              </div>
+            </div>
+
+            <div className="console-card-body profile-card-body">
+              <img
+                src={profilePhoto}
+                alt="Mohankumar Saraswathy"
+                className="profile-avatar"
+              />
+
+              <div className="profile-info">
+                <h2 className="profile-name">
+                  Mohankumar Saraswathy
+                </h2>
+
+                <div className="profile-role">
+                  AWS DevOps Engineer
+                </div>
+
+                <p className="profile-tagline">
+                  Cloud Infrastructure • CI/CD • AWS • Docker • Linux
+                </p>
+
+                <div className="profile-location">
+                  Coimbatore, Tamil Nadu, India
+                </div>
+
+                <Link
+                  to="/experience"
+                  className="profile-view-link"
+                >
+                  View professional profile
+                  <ArrowUpRight size={13} />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Career Health */}
           <div className="console-card" style={{ gridColumn: 'span 1' }}>
             <div className="console-card-header">
               <span className="console-card-title">Career health</span>
@@ -103,7 +149,7 @@ export default function ConsoleHome() {
             </div>
           </div>
 
-          {/* Card 3: Latest Updates */}
+          {/* Card 4: Latest Updates */}
           <div className="console-card" style={{ gridColumn: 'span 1' }}>
             <div className="console-card-header">
               <span className="console-card-title">Latest updates</span>
@@ -138,7 +184,7 @@ export default function ConsoleHome() {
             </div>
           </div>
 
-          {/* Card 4: Experience & Impact */}
+          {/* Card 5: Experience & Impact */}
           <div className="console-card" style={{ gridColumn: 'span 1' }}>
             <div className="console-card-header">
               <span className="console-card-title">Experience & impact</span>
@@ -149,7 +195,7 @@ export default function ConsoleHome() {
             <div className="console-card-body">
               <div className="impact-main-stat">
                 <div className="impact-main-value">
-                  4.5
+                  5.8
                   <span className="impact-trend"><TrendingUp size={16} /> +1 yr</span>
                 </div>
                 <div className="impact-label">Years active in tech</div>
