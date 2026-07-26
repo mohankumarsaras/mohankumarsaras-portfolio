@@ -13,7 +13,7 @@
  */
 
 export const profile = {
-  name: "Mohan Kumar Saras",
+  name: "Mohankumar Saraswathy",
   title: "AWS DevOps Engineer",
   location: "Madurai, Tamil Nadu, India",
   email: "mohankumarsaras@gmail.com",
@@ -151,12 +151,28 @@ export const profile = {
     "HashiCorp Certified: Terraform Associate",
   ],
 
-  // Shown by the `education` command
+// Shown by the `education` command
   education: [
     {
-      institution: "Anna University",
-      degree: "Bachelor of Engineering in Computer Science",
-      duration: "2017 - 2021",
+      degree: "B.Tech in Information Technology",
+      institution: "V.S.B. Engineering College",
+      duration: "2017 – 2021",
+      score: "CGPA: 7.32",
+      level: "Undergraduate",
+    },
+    {
+      degree: "Higher Secondary Certificate (HSC)",
+      institution: "Vivekananda Vidhyalaya Hr. Sec. School",
+      duration: "2015",
+      score: "79.5%",
+      level: "Higher Secondary",
+    },
+    {
+      degree: "Secondary School Leaving Certificate (SSLC)",
+      institution: "Government High School, Olappalayam",
+      duration: "2013",
+      score: "82.6%",
+      level: "Secondary School",
     },
   ],
 };
