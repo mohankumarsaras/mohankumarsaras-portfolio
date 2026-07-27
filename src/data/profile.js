@@ -170,7 +170,7 @@ export const profile = {
     {
       degree: "Secondary School Leaving Certificate (SSLC)",
       institution: "Government High School",
-      duration: "2013 - 2015",
+      duration: "2003 - 2013",
       score: "82.6%",
       level: "Secondary School Level Certification",
     },
