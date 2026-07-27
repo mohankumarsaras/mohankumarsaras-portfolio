@@ -65,7 +65,7 @@ export default function AppShell() {
             <ChevronDown size={14} />
           </div>
           <div className="console-account-pill">
-            <span>Coimbatore, IN</span>
+            <span>Salem, IN</span>
             <ChevronDown size={14} />
           </div>
         </div>

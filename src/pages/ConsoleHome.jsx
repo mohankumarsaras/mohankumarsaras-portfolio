@@ -102,7 +102,7 @@ export default function ConsoleHome() {
                 </p>
 
                 <div className="profile-location">
-                  Coimbatore, Tamil Nadu, India
+                  Salem, Tamil Nadu, India
                 </div>
 
                 <Link
