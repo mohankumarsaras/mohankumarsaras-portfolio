@@ -15,9 +15,9 @@
 export const profile = {
   name: "Mohankumar Saraswathy",
   title: "AWS DevOps Engineer",
-  location: "Madurai, Tamil Nadu, India",
-  email: "mohankumarsaras@gmail.com",
-  phone: "+91 (Contact via LinkedIn/Email)",
+  location: "Salem, Tamil Nadu, India",
+  email: "mohankumar.saraswathy@gmail.com",
+  phone: "+91 8675553162",
   linkedin: "https://www.linkedin.com/in/mohankumarsaras/",
   github: "https://github.com/mohankumarsaras",
 
@@ -58,8 +58,8 @@ export const profile = {
       slug: "siddha_ai_inc",
       projectSlug: "siddha-patient-intake",
       role: "DevOps Engineer",
-      duration: "Mar 2023 – Present",
-      experience: "2+ Years",
+      duration: "Mar 2024 – Present",
+      experience: "2.5 Years",
       location: "",
       client: "Orthopedic Spine Institution, USA",
       project: "SaaS Healthcare Platform – Siddha Patient Intake",
@@ -86,8 +86,8 @@ export const profile = {
       projectSlug: "lloyds-digital-banking",
       role: "Performance Test Engineer",
       duration: "Jun 2019 – Jul 2022",
-      experience: "3.1 Years",
-      location: "",
+      experience: "3.3 Years",
+      location: "Chennai, Tamil Nadu, India",
       client: "Lloyds Banking Group, UK",
       project: "Digital Banking Systems Performance Engineering",
       technologies: ["LoadRunner", "JMeter", "Performance Monitor", "Git", "AWS CI/CD"],
@@ -147,8 +147,8 @@ export const profile = {
 
   // Shown by the `certifications` command
   certifications: [
-    "AWS Certified Solutions Architect – Associate",
-    "HashiCorp Certified: Terraform Associate",
+    "AWS Certified Cloud Practitioner – Foundational",
+    "Meta Certified Version Control",
   ],
 
 // Shown by the `education` command
@@ -156,23 +156,23 @@ export const profile = {
     {
       degree: "B.Tech in Information Technology",
       institution: "V.S.B. Engineering College",
-      duration: "2017 – 2021",
+      duration: "2015 – 2019",
       score: "CGPA: 7.32",
       level: "Undergraduate",
     },
     {
       degree: "Higher Secondary Certificate (HSC)",
       institution: "Vivekananda Vidhyalaya Hr. Sec. School",
-      duration: "2015",
+      duration: "2013 - 2015",
       score: "79.5%",
       level: "Higher Secondary",
     },
     {
       degree: "Secondary School Leaving Certificate (SSLC)",
-      institution: "Government High School, Olappalayam",
-      duration: "2013",
+      institution: "Government High School",
+      duration: "2013 - 2015",
       score: "82.6%",
-      level: "Secondary School",
+      level: "Secondary School Level Certification",
     },
   ],
 };
