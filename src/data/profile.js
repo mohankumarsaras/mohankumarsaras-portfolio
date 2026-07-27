@@ -165,7 +165,7 @@ export const profile = {
       institution: "Vivekananda Vidhyalaya Hr. Sec. School",
       duration: "2013 - 2015",
       score: "79.5%",
-      level: "Higher Secondary",
+      level: "Higher Secondary Certification",
     },
     {
       degree: "Secondary School Leaving Certificate (SSLC)",
