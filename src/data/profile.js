@@ -149,6 +149,8 @@ export const profile = {
   certifications: [
     "AWS Certified Cloud Practitioner – Foundational",
     "Meta Certified Version Control",
+    "AWS SimuLearn - AI Practitioner - Training Badge",
+    "Well-Architected Proficient",
   ],
 
 // Shown by the `education` command
