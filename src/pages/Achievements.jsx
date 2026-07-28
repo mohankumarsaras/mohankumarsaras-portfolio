@@ -1,5 +1,6 @@
-import React from "react";
 import { profile } from "../data/profile";
+import awsLogo from "../assets/aws-logo.svg";
+import metaLogo from "../assets/meta-logo.svg";
 import "../styles/console.css";
 
 export default function Achievements() {
@@ -22,14 +23,21 @@ export default function Achievements() {
           </div>
           <div className="console-card-body">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {profile.certifications.map((cert, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f8fafc', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', background: 'rgba(219, 39, 119, 0.1)', color: '#db2777', borderRadius: '4px' }}>
-                    🏆
+              {profile.certifications.map((cert, i) => {
+                const isAws = cert.startsWith('AWS');
+                return (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f8fafc', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '32px', flexShrink: 0 }}>
+                      <img
+                        src={isAws ? awsLogo : metaLogo}
+                        alt={isAws ? 'AWS logo' : 'Meta logo'}
+                        style={{ maxWidth: '40px', maxHeight: '32px', objectFit: 'contain' }}
+                      />
+                    </div>
+                    <span style={{ color: '#1e293b', fontWeight: '500' }}>{cert}</span>
                   </div>
-                  <span style={{ color: '#1e293b', fontWeight: '500' }}>{cert}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
