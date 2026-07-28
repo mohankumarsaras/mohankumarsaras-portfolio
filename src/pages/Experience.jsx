@@ -19,7 +19,7 @@ export default function Experience() {
           <div className="console-card-body" style={{ fontSize: '24px', fontWeight: '600' }}>{profile.experience.length}</div>
         </div>
         <div className="console-card" style={{ gridColumn: 'span 1' }}>
-          <div className="console-card-header"><span className="console-card-title">Current Experience</span></div>
+          <div className="console-card-header"><span className="console-card-title">Current Role Experience</span></div>
           <div className="console-card-body" style={{ fontSize: '24px', fontWeight: '600', color: '#2DD4BF' }}>{profile.experience[0]?.experience}</div>
         </div>
         <div className="console-card" style={{ gridColumn: 'span 1' }}>

@@ -59,7 +59,7 @@ export const profile = {
       projectSlug: "siddha-patient-intake",
       role: "DevOps Engineer",
       duration: "Mar 2024 – Present",
-      experience: "2.5 Years",
+      experience: "3.3 Years",
       location: "",
       client: "Orthopedic Spine Institution, USA",
       project: "SaaS Healthcare Platform – Siddha Patient Intake",
