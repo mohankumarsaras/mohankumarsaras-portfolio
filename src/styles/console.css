@@ -553,6 +553,83 @@
 }
 
 /* =========================================================
+   ACHIEVEMENTS
+   ========================================================= */
+
+.certifications-card {
+  grid-column: 1 / -1;
+}
+
+.certifications-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.certification-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.certification-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.certification-number {
+  display: inline-flex;
+  flex: 0 0 28px;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0f766e;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.certification-name {
+  min-width: 0;
+  color: #1e293b;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.certification-badge,
+.certification-logo {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 270px;
+}
+
+.certification-badge > div {
+  width: 150px;
+  max-width: 100%;
+}
+
+.certification-logo img {
+  width: min(140px, 70%);
+  max-height: 96px;
+  object-fit: contain;
+}
+
+/* =========================================================
    RECENTLY VISITED
    ========================================================= */
 
@@ -1360,6 +1437,16 @@
   }
 
   .console-card-body {
+    padding: 12px;
+  }
+
+  .certifications-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .certification-item {
+    gap: 12px;
     padding: 12px;
   }
 

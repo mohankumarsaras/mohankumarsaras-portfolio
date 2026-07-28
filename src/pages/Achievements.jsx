@@ -11,7 +11,11 @@ function getCredlyBadgeId(cert) {
 }
 
 function CredlyBadge({ badgeId, title }) {
-  return <div aria-label={`${title} Credly badge`} data-iframe-width="150" data-iframe-height="270" data-share-badge-id={badgeId} data-share-badge-host="https://www.credly.com" />;
+  return (
+    <div className="certification-badge" aria-label={`${title} Credly badge`}>
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id={badgeId} data-share-badge-host="https://www.credly.com" />
+    </div>
+  );
 }
 
 export default function Achievements() {
@@ -34,26 +38,27 @@ export default function Achievements() {
       </div>
 
       <div className="console-grid">
-        <div className="console-card" style={{ gridColumn: 'span 1' }}>
+        <div className="console-card certifications-card">
           <div className="console-card-header"><span className="console-card-title">Certifications</span></div>
           <div className="console-card-body">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {profile.certifications.map((cert) => {
+            <ol className="certifications-list" aria-label="Certifications">
+              {profile.certifications.map((cert, index) => {
                 const badgeId = getCredlyBadgeId(cert);
                 return (
-                  <div key={cert} style={{ padding: '12px', background: '#f8fafc', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                      {badgeId ? <CredlyBadge badgeId={badgeId} title={cert} /> : (
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '32px', flexShrink: 0 }}>
-                          <img src={metaLogo} alt="Meta logo" style={{ maxWidth: '40px', maxHeight: '32px', objectFit: 'contain' }} />
-                        </div>
-                      )}
-                      <span style={{ color: '#1e293b', fontWeight: '500' }}>{cert}</span>
+                  <li key={cert} className="certification-item">
+                    <div className="certification-heading">
+                      <span className="certification-number" aria-hidden="true">{index + 1}</span>
+                      <span className="certification-name">{cert}</span>
                     </div>
-                  </div>
+                    {badgeId ? <CredlyBadge badgeId={badgeId} title={cert} /> : (
+                      <div className="certification-logo">
+                        <img src={metaLogo} alt="Meta logo" />
+                      </div>
+                    )}
+                  </li>
                 );
               })}
-            </div>
+            </ol>
           </div>
         </div>
       </div>
