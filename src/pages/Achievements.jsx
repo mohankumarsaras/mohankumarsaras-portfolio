@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { profile } from "../data/profile";
-import metaLogo from "../assets/meta-logo.svg";
 import "../styles/console.css";
 
 function getCredlyBadgeId(cert) {
@@ -8,6 +7,11 @@ function getCredlyBadgeId(cert) {
   if (cert === "AWS SimuLearn - AI Practitioner - Training Badge") return "507648fa-fe67-4ff4-a07a-09320c227c61";
   if (cert === "Well-Architected Proficient") return "3fe9bad2-af08-4f90-a94a-1d57269e55c9";
   return null;
+}
+
+function getVerificationUrl(cert, badgeId) {
+  if (cert === "Meta Certified Version Control") return "https://www.coursera.org/account/accomplishments/verify/EFVRVHCY8OEJ";
+  return badgeId ? `https://www.credly.com/badges/${badgeId}/public_url` : null;
 }
 
 function CredlyBadge({ badgeId, title }) {
@@ -18,13 +22,30 @@ function CredlyBadge({ badgeId, title }) {
   );
 }
 
+function IframelyVerification({ url }) {
+  return (
+    <div className="certification-iframely iframely-embed">
+      <div className="iframely-responsive" style={{ paddingBottom: '52.3702%', paddingTop: '120px' }}>
+        <a href={url} data-iframely-url="https://iframely.net/CdEYNC5O?theme=dark">Verify</a>
+      </div>
+    </div>
+  );
+}
+
 export default function Achievements() {
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://cdn.credly.com/assets/utilities/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => script.remove();
+    const scripts = [
+      "https://cdn.credly.com/assets/utilities/embed.js",
+      "https://iframely.net/embed.js",
+    ].map((src) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      document.body.appendChild(script);
+      return script;
+    });
+
+    return () => scripts.forEach((script) => script.remove());
   }, []);
 
   return (
@@ -44,17 +65,17 @@ export default function Achievements() {
             <ol className="certifications-list" aria-label="Certifications">
               {profile.certifications.map((cert, index) => {
                 const badgeId = getCredlyBadgeId(cert);
+                const verificationUrl = getVerificationUrl(cert, badgeId);
                 return (
                   <li key={cert} className="certification-item">
                     <div className="certification-heading">
                       <span className="certification-number" aria-hidden="true">{index + 1}</span>
                       <span className="certification-name">{cert}</span>
                     </div>
-                    {badgeId ? <CredlyBadge badgeId={badgeId} title={cert} /> : (
-                      <div className="certification-logo">
-                        <img src={metaLogo} alt="Meta logo" />
-                      </div>
-                    )}
+                    {badgeId ? <CredlyBadge badgeId={badgeId} title={cert} /> : verificationUrl ? (
+                      <IframelyVerification url={verificationUrl} />
+                    ) : null}
+                    <a className="certification-verification-link" href={verificationUrl} target="_blank" rel="noreferrer">Verify</a>
                   </li>
                 );
               })}
